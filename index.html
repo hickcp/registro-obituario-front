@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="./styles.css">
+  
+</head>
+
+<div class="sidebar">
+
+  <div>
+    <img src="./logopref.png" id="logopref" alt="Logotipo da Prefeitura de Votorantim">
+  </div>
+
+  <a class="list-group-item" href="#"><i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp; Buscar</a>
+  <a class="list-group-item" href="./cadastrarConcessionario.html"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Cadastrar Concessionário</a>
+  <a class="list-group-item" href="./cadastrar - falecido.html"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Registrar Finado</a>
+
+
+</div>
+
+
+<header>
+	<div class="overlay">
+    <h1>Cemitério Municipal de Votorantim</h1>
+</header>
+
+<body>
+
+  <div>
+    <div class="header-index">
+  
+  <h2>Pref. Votorantim - Cemitério</h2>
+
+  <input type="text" id="input_pesquisar" placeholder="Buscar...">
+
+  <button type="button" class="button-index" id="pesquisar">Pesquisar</button>
+
+  <a href="./cadastrarConcessionario.html"><button type="button" class="button-index" id="cadastrar">Cadastrar</button></a>
+
+</div>
+
+  <div> 
+    <div class="table-busca">
+
+  <table id="tb_informacoes">
+    <thead>
+      <tr>
+        
+        <th id="tb_informacoes_codigo" style="padding: 5px">Código</th>
+        <th id="tb_informacoes_nome" style="padding: 5px">Nome do Finado</th>
+        <th id="tb_informacoes_RG" style="padding: 5px">RG</th>
+        </th>
+       
+      </tr>
+    </thead> 
+ 
+</div>
+
+</body>
+
+<script>
+  document.getElementById("pesquisar").addEventListener("click", function () {
+    var value = document.getElementById("input_pesquisar").value;
+
+    pesquisarNaApi(value);
+  });
+
+  function pesquisarNaApi(value) {
+    alert("Pesquisei o valor: " + value);
+  }
+
+  document.getElementById("cadastrar").addEventListener("click", function () {
+    location.href = "/cadastrar.html";
+  });
+
+  const editar = document.getElementsByClassName("editar");
+
+  console.log(editar);
+
+  for (var i = 0; i < editar.length; i++) {
+    editar[i].addEventListener("click", directToRegisterPage);
+  }
+
+  function directToRegisterPage() {
+    location.href = "/cadastrar.html";
+  }
+
+  const excluir = document.getElementsByClassName("excluir");
+
+  for (var i = 0; i < excluir.length; i++) {
+    excluir[i].addEventListener("click", function () {
+      alert("Excluido com sucesso!");
+    });
+  }
+</script>
+
+<script src="index.js"></script>
