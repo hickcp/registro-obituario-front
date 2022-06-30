@@ -2,11 +2,8 @@ window.onload = () => {
     const inputNome = document.getElementById("nome");
     const inputCpf = document.getElementById("cpf");
     const inputRg = document.getElementById("rg");
-    const inputCidade = document.getElementById("cidade");
-    const inputEstado = document.getElementById("estado");
-    const inputBairro = document.getElementById("bairro");
-    const inputRua = document.getElementById("rua");
-    const inputNumero = document.getElementById("numero");
+    const inputDataNascimento = document.getElementById("dataNascimento");
+    
 
     const inputSalvar = document.getElementById("buttonSalvar");
 
@@ -19,8 +16,23 @@ window.onload = () => {
         const payloadUsuario = {
             nome: inputNome.value,
             cpf: inputCpf.value,
-            rg: inputRg.value
+            rg: inputRg.value,
+            dataNascimento: inputDataNascimento.value
         };
+
+
+        if (payloadUsuario){
+            fetch(endpointCadastro,{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(payloadUsuario)
+            });
+        };
+
+    
+    });
+
+    inputSalvar.addEventListener("click", event =>{
 
         const payloadEndereco ={
             cidade: inputCidade.value,
@@ -33,14 +45,7 @@ window.onload = () => {
             }
         };
 
-        if (payloadUsuario){
-            fetch(endpointCadastro,{
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(payloadUsuario)
-            });
-        };
-
+        
         if (payloadEndereco){
             fetch(endpointEndereco,{
                 method: "POST",
@@ -48,6 +53,7 @@ window.onload = () => {
                 body: JSON.stringify(payloadEndereco)
             });
         };
+    
     });
 
 };

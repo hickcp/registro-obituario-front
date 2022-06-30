@@ -1,75 +1,161 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Obiturario</title>
 
-<link rel="stylesheet" href="./styles.css">
-  
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-<div class="sidebar">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-  <div>
-    <img src="./logopref.png" id="logopref" alt="Logotipo da Prefeitura de Votorantim">
-  </div>
+  <body>
+    <div class="sidebar">
+      <div>
+        <img src="./logopref.png" id="logopref" alt="Logotipo da Prefeitura de Votorantim" />
+      </div>
 
-  <a class="list-group-item" href="#"><i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp; Buscar</a>
-  <a class="list-group-item" href="./cadastrarConcessionario.html"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Cadastrar Concessionário</a>
-  <a class="list-group-item" href="./cadastrar - falecido.html"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Registrar Finado</a>
+      <a class="list-group-item" href="index.html">
+        <i class="fa fa-search fa-fw" aria-hidden="true"></i>
+        Buscar
+      </a>
+      <a class="list-group-item" href="./cadastrarConcessionario.html">
+        <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
+        Cadastrar Concessionário
+      </a>
+      <a class="list-group-item" href="./cadastrar - falecido.html">
+        <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
+        Registrar Finado
+      </a>
+      <a class="list-group-item" href="./cadastrarEndereco.html">
+        <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
+        Registrar Endereço
+      </a>
+    </div>
+    </div>
 
+    <header>
+      <div class="overlay">
+        <h1>Cemitério Municipal de Votorantim</h1>
+      </div>
+    </header>
 
-</div>
+    <h2 style="text-align: center">Pref. Votorantim - Cemitério - Detalhes do concessionário</h2>
 
-
-<header>
-	<div class="overlay">
-    <h1>Cemitério Municipal de Votorantim</h1>
-</header>
-
-<body>
-
-  
-  
-  <h2 style="text-align: center;">Pref. Votorantim - Cemitério - Detalhes do concessionário</h2>
-
-
-
-  <table id="tb_detalhes">
-    <thead>
-      <tr>
-        
-        <th id="tb_informacoes_codigo" style="padding: 5px">Código</th>
-        <th id="tb_informacoes_nome" style="padding: 5px">Nome do Finado</th>
-        <th id="tb_informacoes_RG" style="padding: 5px">RG</th>
-        </th>
-       
-      </tr>
-    </thead> 
-    <tbody>
-
-    <!--<tr>
-        <td>1</td>
-        <td>Maria Aparecida da Silva</td>
-        <td>1234</td>
-        <td>
-          <a href="./editarCadastroConcessionario.html"><button type="button" class="button-index" id="editar">Editar</button></a>
-          <button type="button" class="button-index excluir" class="excluir">Excluir</button>
-        </td>
-      </tr> -->
-
-    </tbody>
-
-  </table>
-
-</div>
-
-</body>
+    <table id="tb_detalhes_concessionario">
+      <thead>
+        <tr>
+          <h2>Dados do Concessionário:</h2>
+          <th style="padding: 5px">Código</th>
+          <!-- <th style="padding: 5px">Nome do Finado</th> -->
+          <th style="padding: 5px">RG</th>
+          <th style="padding: 5px">CPF</th>
+          <!-- <th style="padding: 5px">Tumulo</th> -->
+          <th style="padding: 5px">Nome do Concessionário</th>
+          <th style="padding: 5px">Estado</th>
+          <th style="padding: 5px">Cidade</th>
+          <th style="padding: 5px">Rua</th>
+          <th style="padding: 5px">Número</th>
+          <th style="padding: 5px">Bairro</th>
+      </thead>
+      <tbody></tbody>
+    </table>
 
 
 
-<script src="index.js"></script>
+    <table id="tb_detalhes_finado">
+      <thead>
+        <tr>
+
+          <h2><br>Dados do Finado:</h2>
+          <th style="padding: 5px">Código</th>
+          <th style="padding: 5px">RG</th>
+          <th style="padding: 5px">CPF</th>
+          <th style="padding: 5px">Nome do Finado</th>
+          <th style="padding: 5px">Tumulo</th>
+          <th style="padding: 5px">Data de Nascimento</th>
+          <th style="padding: 5px">Data de Óbito</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    
+
+  </body>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get("name");
+
+    fetch("http://localhost:8080/finado/search/" + name, {
+      method: "GET",
+    })
+      .then((res) => {
+        if (res.status === 403) {
+          window.location = "/";
+        }
+
+        if (!res.ok) {
+          throw new Error("Erro ao buscar finado. " + res.statusText);
+        }
+
+        return res.json();
+      })
+      .then((res) => {
+        const finados = res; // recebe uma lista de finados
+
+        finados.forEach((cliente) => {
+          addDetalhesToTable("tb_detalhes_concessionario", cliente);
+          addDetalhesFinadoToTable("tb_detalhes_finado", cliente);
+      
+        });
+      });
+
+
+    const addDetalhesToTable = (tableId, finado) => {
+      const tableRef = document.getElementById(tableId);
+      const newRow = tableRef.insertRow(-1);
+
+      newRow.insertCell(0).appendChild(document.createTextNode(finado.concessionario.id));
+      // newRow.insertCell(1).appendChild(document.createTextNode(finado.nome));
+      newRow.insertCell(1).appendChild(document.createTextNode(finado.concessionario.rg));
+      newRow.insertCell(2).appendChild(document.createTextNode(finado.concessionario.cpf));
+      newRow.insertCell(3).appendChild(document.createTextNode(finado.concessionario.nome));
+      // newRow.insertCell(3).appendChild(document.createTextNode(finado.tumulo));
+      
+      
+
+      const endereco = finado.concessionario.endereco;
+      if (endereco) {
+        //newRow.insertCell(4).appendChild(document.createTextNode(finado.concessionario.nome));
+        newRow.insertCell(4).appendChild(document.createTextNode(endereco.estado));
+        newRow.insertCell(5).appendChild(document.createTextNode(endereco.cidade));
+        newRow.insertCell(6).appendChild(document.createTextNode(endereco.rua));
+        newRow.insertCell(7).appendChild(document.createTextNode(endereco.numero));
+        newRow.insertCell(8).appendChild(document.createTextNode(endereco.bairro));
+      } else {
+        console.log("Dados do concessionario não encontrados!");
+      }
+    };
+    
+    const addDetalhesFinadoToTable = (tableId, finadosdetalhes) => {
+      const tableRef = document.getElementById(tableId);
+      const newRow = tableRef.insertRow(-1);
+
+      newRow.insertCell(0).appendChild(document.createTextNode(finadosdetalhes.id));
+      newRow.insertCell(1).appendChild(document.createTextNode(finadosdetalhes.rg));
+      newRow.insertCell(2).appendChild(document.createTextNode(finadosdetalhes.cpf));
+      newRow.insertCell(3).appendChild(document.createTextNode(finadosdetalhes.nome));
+      newRow.insertCell(4).appendChild(document.createTextNode(finadosdetalhes.tumulo));
+      newRow.insertCell(5).appendChild(document.createTextNode(finadosdetalhes.dataNascimento));
+      newRow.insertCell(6).appendChild(document.createTextNode(finadosdetalhes.dataObito));
+      
+    };
+  </script>
+</html>

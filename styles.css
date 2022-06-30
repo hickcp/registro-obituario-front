@@ -219,14 +219,14 @@ body {
 }
 
 .table-busca{
+ 
   max-width: 500px;
 	padding: 8px 12px 10px 20px;
 	font: 13px Arial, Helvetica, sans-serif;
-  position: relative;
-  left: 85px;
-  bottom: -30px;
-  background-color: rgb(202, 202, 219, 0.9);
+  position:relative;
+  bottom: -25px;
   border-radius: 1%;
+  
 }
 
 .button-index {

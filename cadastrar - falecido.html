@@ -21,7 +21,11 @@
   <a class="list-group-item" href="./index.html"><i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp; Buscar</a>
   <a class="list-group-item" href="./cadastrarConcessionario.html"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Cadastrar Concessionário</a>
   <a class="list-group-item" href="./cadastrar - falecido.html"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Registrar Finado</a>
-  
+  <a class="list-group-item" href="./cadastrarEndereco.html">
+    <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
+    Registrar Endereço
+  </a>
+</div>
 </div>
 
 <header>
@@ -38,16 +42,21 @@
   <div class="form-style-heading">Cadastrar Finado</div>
   <form>
 
-    <label for="field1"><span>Nome</span><input type="text" class="input-field" name="Nome" value="" id="nome" /></label>
+  <label for="field4"><span>Nome Concessionário</span><select name="concessionario" id="concessionario">
+      <option></option>
+  </select>
+
+  <label for="field1"><span>Nome</span><input type="text" class="input-field" name="Nome" value="" id="nome" /></label>
 
   <label for="field2"><span>CPF</span><input type="text" class="input-field" name="CPF" value="" id="cpf" /></label>
 
   <label for="field3"><span>RG</span><input type="text" class="input-field" name="RG" value="" id="rg" /></label>
+  
+  <label for="field3"><span>Data de Nascimento</span><input type="date" class="input-field" name="dataNascimento" value="" id="dataNascimento" /></label>
+
+  <label for="field3"><span>Data de Óbito</span><input type="date" class="input-field" name="dataObito" value="" id="dataObito" /></label>
 
   <label for="field4"><span>Sepultura</span><input type="text" class="input-field" name="Sepultura" value="" id="sepultura" /></label>
-
-  <label for="field5"><span>Nome Concessionário</span><input type="text" class="input-field" name="NomeConcessionario" value="" id="nomeConcessionario" /></label>
-
 
 
  <!-- <label for="field6"><span>Observação <span class="required">*</span></span><textarea name="field5" class="textarea-field"></textarea></label> -->
